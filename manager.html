@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Table, Attendance Sheet, and Task Graph</title>
+    <style>
+        /* Existing styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: url('https://blog.teamproclean.com/hubfs/AdobeStock_212183402-570747-edited.jpeg') no-repeat center center; 
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .table_header h1, .chart_header h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            background-color: white;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .team-label {
+            font-weight: bold;
+            background-color: #e6e6e6;
+        }
+
+        .attendance-form {
+            width: 80%;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px; /* Add margin for spacing */
+        }
+
+        .attendance-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+
+        .chart-container {
+            width: 80%;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        canvas {
+            max-width: 100%;
+        }
+
+    </style>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Table Header -->
+    <section class="table__header">
+        <h1>Teams and Assigned Tasks</h1>
+    </section>
+
+    <!-- Team Table -->
+    <section class="table__body">
+        <table>
+            <thead>
+                <tr>
+                    <th>Team</th>
+                    <th>Team Leader</th>
+                    <th>Member 1</th>
+                    <th>Member 2</th>
+                    <th>Member 3</th>
+                    <th>Member 4</th>
+                    <th>Task Assigned</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="team-label">Team 1</td>
+                    <td>Baljeet singh</td>
+                    <td>Raman kaur</td>
+                    <td>Baldev Singh</td>
+                    <td>Gurkirat singh</td>
+                    <td>Uday brar</td>
+                    <td>Software Development</td>
+                </tr>
+                <tr>
+                    <td class="team-label">Team 2</td>
+                    <td>Gu Wei Yi</td>
+                    <td>Si Tu Mo</td>
+                    <td>Fu Pei</td>
+                    <td>Wang Shan</td>
+                    <td>Jiang</td>
+                    <td>Database Management</td>
+                </tr>
+                <tr>
+                    <td class="team-label">Team 3</td>
+                    <td>Zheng Shu Yi</td>
+                    <td>Shi Yan</td>
+                    <td>Guan Ji</td>
+                    <td>Bi Ruo Shan</td>
+                    <td>Yu You</td>
+                    <td>Testing and QA</td>
+                </tr>
+                <tr>
+                    <td class="team-label">Team 4</td>
+                    <td>Gu Rong Yan</td>
+                    <td>Su Jing Jing</td>
+                    <td>Ai Mi</td>
+                    <td>Xie Te</td>
+                    <td>Han Ran</td>
+                    <td>Network Administration</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Attendance Form -->
+    <section class="attendance-form">
+        <h2>Attendance Sheet</h2>
+        <form>
+            <div class="form-group">
+                <label for="employeeName">Employee Name:</label>
+                <input type="text" id="employeeName" name="employeeName" placeholder="Enter employee name" required>
+            </div>
+            <div class="form-group">
+                <label for="employeeId">Employee ID:</label>
+                <input type="text" id="employeeId" name="employeeId" placeholder="Enter employee ID" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Mark Attendance</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Chart Section -->
+    <section class="chart-container">
+        <h2>Task Completion Status</h2>
+        <canvas id="taskChart"></canvas>
+    </section>
+
+    <!-- Chart.js Script to Render the Bar Chart -->
+    <script>
+        const ctx = document.getElementById('taskChart').getContext('2d');
+        const taskChart = new Chart(ctx, {
+            type: 'bar', // Bar chart
+            data: {
+                labels: ['Team 1', 'Team 2', 'Team 3', 'Team 4'], // Teams
+                datasets: [
+                    {
+                        label: 'Tasks Assigned',
+                        data: [5, 4, 6, 3], // Number of tasks assigned
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)', // Bar color for assigned tasks
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Tasks Completed',
+                        data: [4, 3, 5, 2], // Number of tasks completed
+                        backgroundColor: 'rgba(75, 192, 192, 0.6)', // Bar color for completed tasks
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Time Taken (hours)',
+                        data: [20, 25, 15, 30], // Time taken to complete tasks
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)', // Bar color for time taken
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

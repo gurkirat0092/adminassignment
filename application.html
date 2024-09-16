@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INITECH</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: url('https://blog.teamproclean.com/hubfs/AdobeStock_212183402-570747-edited.jpeg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        header {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+            display: flex;
+            justify-content: space-between; /* Space between logo and company name */
+            align-items: center;
+            padding: 20px 50px; /* Add padding to sides */
+            position: absolute; /* Position header at the top */
+            top: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0 auto; /* Center the company name */
+            font-size: 24px;
+            color: #333;
+            position: absolute; /* Position the title absolutely */
+            left: 50%; /* Move to the middle */
+            transform: translateX(-50%); /* Center it */
+        }
+        header img {
+            height: 50px; /* Adjust logo size */
+        }
+        .container {
+            width: 400px; /* Adjust container width */
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+            margin-top: 100px; /* Add margin to account for fixed header */
+        }
+        .container h2 {
+            text-align: center;
+            color: #333;
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .login-form input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .login-form button {
+            padding: 15px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .login-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://i.pinimg.com/originals/40/f0/36/40f0362eae7e644809b23f409820890f.jpg" alt="INITECH Logo">
+        <h1>INITECH</h1>
+    </header>
+
+    <div class="container">
+       
+        <h2>Login</h2>
+        <form class="login-form" id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript to handle login validation
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+    
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+    
+            // Hard-coded credentials for Manager and Employee
+            const managerCredentials = { username: 'manager', password: 'manager123' };
+            const employeeCredentials = { username: 'employee', password: 'employee123' };
+    
+            console.log("Username entered:", username);
+            console.log("Password entered:", password);
+    
+            if (username === managerCredentials.username && password === managerCredentials.password) {
+                console.log("Manager login successful");
+                window.location.href = 'manager.html'; // Redirect to manager page
+            } else if (username === employeeCredentials.username && password === employeeCredentials.password) {
+                console.log("Employee login successful");
+                window.location.href = 'employee.html'; // Redirect to employee page
+            } else {
+                console.log("Incorrect username or password");
+                alert('Your username and password are not correct'); // Show pop-up for incorrect credentials
+            }
+        });
+    </script>
+    
+</body>
+</html>

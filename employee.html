@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: url('https://blog.teamproclean.com/hubfs/AdobeStock_212183402-570747-edited.jpeg') no-repeat center center; 
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .header h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .employee-info, .calendar, .task-chart {
+            width: 80%;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .employee-info h2, .calendar h2, .task-chart h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .info-table, th, td {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        #calendar {
+            width: 100%;
+            height: 400px; /* Adjust calendar height */
+        }
+
+        .task-chart {
+            text-align: center;
+        }
+
+        #taskChart {
+            max-width: 600px; /* Limit chart width */
+            margin: 0 auto;
+        }
+    </style>
+    <!-- Include Chart.js for the Pie Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Google Calendar Embed -->
+    <script async defer src="https://apis.google.com/js/platform.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <section class="header">
+        <h1>Employee Dashboard</h1>
+    </section>
+
+    <!-- Employee Information -->
+    <section class="employee-info">
+        <h2>Employee Information</h2>
+        <table class="info-table">
+            <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Manager Name</th>
+                    <th>Task Assigned</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Gurkirat Singh</td>
+                    <td>Baljeet singh</td>
+                    <td>Software Development</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Google Calendar Integration -->
+    <section class="calendar">
+        <h2>Google Calendar</h2>
+        <div id="calendar">
+            <!-- Embed Google Calendar iframe -->
+            <iframe src="https://calendar.google.com/calendar/embed?src=youremail%40domain.com&ctz=America%2FNew_York" style="border: 0" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+        </div>
+    </section>
+
+    <!-- Task Progress Pie Chart -->
+    <section class="task-chart">
+        <h2>Task Progress Overview</h2>
+        <canvas id="taskChart"></canvas>
+    </section>
+
+    <!-- JavaScript to Create Pie Chart -->
+    <script>
+        // Data for the Pie Chart
+        const data = {
+            labels: ['Ongoing Tasks', 'Completed Tasks'],
+            datasets: [{
+                label: 'Task Status',
+                data: [60, 40], // Example data; modify as needed
+                backgroundColor: ['#007bff', '#28a745'],
+                hoverOffset: 4
+            }]
+        };
+
+        // Config for Pie Chart
+        const config = {
+            type: 'pie',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                }
+            }
+        };
+
+        // Render Pie Chart
+        const taskChart = new Chart(
+            document.getElementById('taskChart'),
+            config
+        );
+    </script>
+</body>
+</html>

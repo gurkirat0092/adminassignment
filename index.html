@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INITECH</title>
+    <style>   
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: url('https://blog.teamproclean.com/hubfs/AdobeStock_212183402-570747-edited.jpeg') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        header {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+            display: flex;
+            justify-content: space-between; /* Space between logo and company name */
+            align-items: center;
+            padding: 20px 50px; /* Add padding to sides */
+            position: absolute; /* Position header at the top */
+            top: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0 auto; /* Center the company name */
+            font-size: 24px;
+            color: #333;
+            position: absolute; /* Position the title absolutely */
+            left: 50%; /* Move to the middle */
+            transform: translateX(-50%); /* Center it */
+        }
+        header img {
+            height: 50px; /* Adjust logo size */
+        }
+        .container {
+            width: 400px; /* Adjust container width */
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+            margin-top: 100px; /* Add margin to account for fixed header */
+        }
+        .container h2 {
+            text-align: center;
+            color: #333;
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            gap: 20px;
+        }
+        .button-container a {
+            text-decoration: none;
+            text-align: center;
+            padding: 15px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff; /* Button background color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .button-container a:hover {
+            background-color: #0056b3; /* Button hover color */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://i.pinimg.com/originals/40/f0/36/40f0362eae7e644809b23f409820890f.jpg" alt="INITECH Logo">
+        <h1>INITECH</h1>
+    </header>
+
+    <div class="container">
+        <h1>Welcome</h1>
+        <h3 style="text-align: center; color: black;">Select your role in the company</h3>
+        <div class="button-container">
+            <!-- Buttons linking to index.html page -->
+            <a href="application.html">Manager</a>
+            <a href="application.html">Employee</a>
+        </div>
+    </div>
+</body>
+</html>
